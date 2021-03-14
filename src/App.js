@@ -6,14 +6,29 @@ import {
   Redirect,
 } from "react-router-dom";
 
-function autheticateRoute({ component: Component, authenticated }) {
-  return (
-    <Route
-      render={(props) => authenticated === true
-        ? <Component {...props} />
-        : <Redirect to={{ pathname: '/login', state: { from: props.location } }} />}
-    />
-  )
+import { useSelector } from 'react-redux';
+import Home from './screens/Home';
+import Chat from './screens/Chat';
+import Signup from './screens/Signup';
+import Login from './screens/Login';
+import { auth } from './services/firebase';
+
+function App() {
+
+  const userSignin = useSelector((state) => state.userSignin);
+
+  render{
+    return this.state.loading === true ? <h2>Loading...</h2> : (
+      <Router>
+        <Switch>
+          <Route exact path="/" component={Home}></Route>
+          <Route path="/chat" component={Chat}></Route>
+          <Route path="/signup" component={Signup}></Route>
+          <Route path="/login" component={Login}></Route>
+        </Switch>
+      </Router>
+    );
+  }
 }
 
 export default App;
