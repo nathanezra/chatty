@@ -9,7 +9,7 @@ import {
 import { useSelector } from 'react-redux';
 import Home from './screens/Home';
 import Chat from './screens/Chat';
-import Signup from './screens/Signup';
+import RegisterScreen from './screens/RegisterScreen';
 import Login from './screens/Login';
 
 
@@ -25,7 +25,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={Home}></Route>
         <Route path="/chat" component={Chat}></Route>
-        <Route path="/signup" component={Signup}></Route>
+        <Route path="/register" component={RegisterScreen}></Route>
         <Route path="/login" component={Login}></Route>
       </Switch>
     </Router>
