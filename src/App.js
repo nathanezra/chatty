@@ -7,10 +7,14 @@ import {
 } from "react-router-dom";
 
 import { useSelector } from 'react-redux';
-import Home from './screens/Home';
-import Chat from './screens/Chat';
+// import Home from './screens/Home';
+// import Chat from './screens/Chat';
 import RegisterScreen from './screens/RegisterScreen';
 import SigninScreen from './screens/SigninScreen';
+import LogoutScreen from './screens/LogoutScreen';
+import background from "./img/terre.jpg"
+import ButtonAppBar from './components/AppBar';
+
 
 
 function App() {
@@ -18,16 +22,24 @@ function App() {
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
 
-  
+  console.log(userSignin)
 
   return  (
     <Router>
-      <Switch>
-        <Route exact path="/" component={Home}></Route>
-        <Route path="/chat" component={Chat}></Route>
-        <Route path="/register" component={RegisterScreen}></Route>
-        <Route path="/signin" component={SigninScreen}></Route>
-      </Switch>
+      <div style={{ backgroundImage: `url(${background})`, width: '100%', height:' 100%', margin: '0em',
+      left: '0em', top: '0em',position: 'fixed' }}>
+        <ButtonAppBar 
+            title={'Chatty'}
+            userInfo={userInfo} />
+        <Switch>
+          {/* <Route exact path="/" component={Home}></Route> */}
+          {/* <Route path="/chat" component={Chat}></Route> */}
+          <Route path="/register" component={RegisterScreen}></Route>
+          <Route path="/signin" component={SigninScreen}></Route>
+          <Route path="/logout" component={LogoutScreen}></Route>
+        </Switch>
+      </div>
+      
     </Router>
   );
 
