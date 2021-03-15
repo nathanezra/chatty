@@ -6,8 +6,7 @@ import {
     userRegisterReducer,
   } from './reducers/userReducers';
 import {
-  messageAddReducer,
-  messageReadReducer
+  messageReducer,
 } from './reducers/messageReducers'
 
 const userInfo = Cookie.getJSON('userInfo') || null
@@ -20,8 +19,7 @@ const initialState = {
 const reducer = combineReducers({
     userSignin: userSigninReducer,
     userRegister: userRegisterReducer,
-    messageAdd: messageAddReducer,
-    messageRead: messageReadReducer
+    message: messageReducer,
 });
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(

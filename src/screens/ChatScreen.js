@@ -12,8 +12,10 @@ function ChatScreen(props) {
   const userSignin = useSelector(state => state.userSignin);
   const { userInfo } = userSignin;
 
-  const messageRead = useSelector(state => state.messageRead);
-  const { messages } = messageRead;
+  const messageStore = useSelector(state => state.message);
+  const { messages } = messageStore;
+
+  
   let state = useSelector(state => state)
 
 
@@ -21,15 +23,15 @@ function ChatScreen(props) {
     dispatch(readMessage())
   }, []);
 
-  // useEffect(() => {
-  //   console.log('messages', messages, state)
-  // }, [state, messages]);
+  useEffect(() => {
+    console.log('I changed')
+  }, [messageStore]);
 
   let sendMessage = (text) => {
     dispatch(addMessage(userInfo.name, text))
   }
   return(
-    <Chat title={'My Awesome Chat'} messages = {messages} user={props.userInfo} sendMessage={sendMessage}/>
+    <Chat title={'My Awesome Chat'} messages = {messages} user={userInfo} sendMessage={sendMessage}/>
   ) 
 }
 

@@ -48,7 +48,7 @@ const DUMMY_DATA = [
                     <Avatars users={[{name:'nathan', onLine:true},{name:'paul', onLine:false}]}/>
                 </Grid>
                 <Grid item xs={9}>
-                    <MessageList messages={props.messages} user={{name:'janedoe'}}/>
+                    <MessageList messages={props.messages} user={props.user}/>
                     <Divider />
                     <SendMessageForm sendMessage={props.sendMessage}/>
                 </Grid>

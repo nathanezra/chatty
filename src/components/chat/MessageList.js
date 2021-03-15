@@ -26,6 +26,7 @@ function MessageList (props) {
 
     const classes = useStyles();
     
+    const userName = props.user ? props.user.name : ''
 
     return (
         <List className={classes.messageArea}>
@@ -35,12 +36,12 @@ function MessageList (props) {
                         <Grid container>
                             <Grid item xs={12}>
                                 <ListItemText 
-                                    align = {message.name === props.user.name ? "right" : 'left'} 
+                                    align = {message.name === userName ? "right" : 'left'} 
                                     primary={message.text}></ListItemText>
                             </Grid>
                             <Grid item xs={12}>
                                 <ListItemText 
-                                    align = {message.name === props.user.name ? "right" : 'left'} 
+                                    align = {message.name === userName? "right" : 'left'} 
                                     secondary={message.name + ' ' + message.time}></ListItemText>
                             </Grid>
                         </Grid>
