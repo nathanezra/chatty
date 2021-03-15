@@ -29,6 +29,7 @@ function RegisterScreen(props) {
   useEffect(() => {
     if (userInfo) {
       props.history.push(redirect);
+      window.location.reload();
     }
     return () => {
       //
