@@ -50,7 +50,7 @@ export default function ButtonAppBar(props) {
             <AppBar position="static" color="transparent">
                 <Toolbar>
                     <Typography  variant="h6" className={classes.title}>
-                        <StyledLink href="/chat" color="textSecondary">
+                        <StyledLink href= {props.userInfo ? "/chat" : '/signin'} color="textSecondary">
                             {props.title}
                         </StyledLink>
                     </Typography>

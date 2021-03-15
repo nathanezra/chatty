@@ -8,7 +8,7 @@ import {
 import {
   messageAddReducer,
   messageReadReducer
-} from './reducers/messagReducers'
+} from './reducers/messageReducers'
 
 const userInfo = Cookie.getJSON('userInfo') || null
 

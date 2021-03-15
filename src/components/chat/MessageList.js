@@ -29,7 +29,7 @@ function MessageList (props) {
 
     return (
         <List className={classes.messageArea}>
-            {props.messages.map(message => {
+            {props.messages ? props.messages.map(message => {
                 return(
                     <ListItem>
                         <Grid container>
@@ -46,7 +46,7 @@ function MessageList (props) {
                         </Grid>
                     </ListItem>
                 )
-            })}
+            }): null}
         </List>
     )
       

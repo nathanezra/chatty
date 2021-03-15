@@ -4,27 +4,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Chat from '../components/chat/Chat'
 import { addMessage, readMessage } from '../actions/messageActions';
  
-  const useStyles = makeStyles((theme) => ({
-    root: {
-      flexGrow: 1,
-      backgroundColor: 'rgba(255,255,255,0.5)',
-      marginLeft: '25%',
-      marginTop: '10px',
-      width: '50%'
-    },
-    form:{
-      marginLeft: '25%',
-      marginTop: '10px',
-      width: '50%',
-      marginBottom: '10px',
-      backgroundColor: 'white',
-    },
-    paper: {
-      padding: theme.spacing(1),
-      textAlign: 'center',
-      color: theme.palette.text.secondary,
-    },
-  }));
 
 function ChatScreen(props) {
 
@@ -33,17 +12,18 @@ function ChatScreen(props) {
   const userSignin = useSelector(state => state.userSignin);
   const { userInfo } = userSignin;
 
-  const messages = useSelector(state => state.messages);
+  const messageRead = useSelector(state => state.messageRead);
+  const { messages } = messageRead;
+  let state = useSelector(state => state)
 
-  const classes = useStyles();
 
   useEffect(() => {
     dispatch(readMessage())
   }, []);
 
-  useEffect(() => {
-    console.log('hey')
-  }, [messages]);
+  // useEffect(() => {
+  //   console.log('messages', messages, state)
+  // }, [state, messages]);
 
   let sendMessage = (text) => {
     dispatch(addMessage(userInfo.name, text))
