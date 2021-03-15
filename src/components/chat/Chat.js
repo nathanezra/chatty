@@ -25,12 +25,12 @@ const useStyles = makeStyles({
 
 const DUMMY_DATA = [
     {
-      senderId: "perborgen",
+      name: "perborgen",
       text: "who'll win?",
       time: "10:30"
     },
     {
-      senderId: "janedoe",
+      name: "janedoe",
       text: "I dont know",
       time: "10:35"
     }
@@ -39,7 +39,6 @@ const DUMMY_DATA = [
   function Chat(props) {
 
     const classes = useStyles();
-
 
       return (
         <div >

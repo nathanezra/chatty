@@ -12,7 +12,7 @@ function SendMessageForm (props) {
 
   let handleSubmit = (e) => {
         e.preventDefault()
-        this.props.sendMessage(message)
+        props.sendMessage(message)
         setMessage('')
       }
 
@@ -23,7 +23,7 @@ function SendMessageForm (props) {
       return (
         <Grid container style={{padding: '20px'}}>
             <Grid item xs={11}>
-                <TextField id="outlined-basic-email" onChange={handleChange} label="Type Something" fullWidth />
+                <TextField id="outlined-basic-email" onChange={handleChange} value={message} label="Type Something" fullWidth/>
             </Grid>
             <Grid xs={1} align="right">
                 <Fab color="primary" aria-label="add" onClick={handleSubmit}><SendIcon /></Fab>

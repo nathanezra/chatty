@@ -1,13 +1,16 @@
 import { MESSAGE_ADD_REQUEST, MESSAGE_ADD_SUCCESS, MESSAGE_ADD_FAIL} from "../constants/messageConstants";
 
-function messageAddReducer(state = {}, action) {
+function messageReducer(state = {}, action) {
     switch (action.type) {
       case MESSAGE_ADD_REQUEST:
-        return { loading: true };
+        return { ...state};
       case MESSAGE_ADD_SUCCESS:
-        return { loading: false, userInfo: action.payload };
+        let messages = state.messages
+        messages.push({name: action.name, text: action.text})
+        console.log(messages)
+        return { ...state, messages : messages};
       case MESSAGE_ADD_FAIL:
-        return { loading: false, error: action.payload };
+        return { };
       case USER_LOGOUT:
         return {};
       default: return state;
@@ -15,5 +18,5 @@ function messageAddReducer(state = {}, action) {
   }
 
   export {
-    messageAddReducer
+    messageReducer
   }

@@ -7,7 +7,6 @@ import {
 } from "../constants/userConstants";
 
 import { auth } from '../config/firebase';
-import { db } from '../config/firebase'
 
 
 const signin = (email, password) => async (dispatch) => {

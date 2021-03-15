@@ -14,6 +14,7 @@ const userInfo = Cookie.getJSON('userInfo') || null
 
 const initialState = {
     userSignin: { userInfo },
+    messages: []
 };
 const reducer = combineReducers({
     userSignin: userSigninReducer,

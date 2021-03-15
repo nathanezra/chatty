@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import Chat from '../components/chat/Chat'
+import { addMessage } from '../actions/messageActions';
 
 function ChatScreen(props) {
 
@@ -34,8 +35,11 @@ function ChatScreen(props) {
   }));
   const classes = useStyles();
 
+  let sendMessage = (text) => {
+    dispatch(addMessage(userInfo.name, text))
+  }
   return(
-    <Chat title={'My Awesome Chat'} user={props.userInfo}/>
+    <Chat title={'My Awesome Chat'} user={props.userInfo} sendMessage={sendMessage}/>
   ) 
 }
 

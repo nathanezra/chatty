@@ -35,13 +35,13 @@ function MessageList (props) {
                         <Grid container>
                             <Grid item xs={12}>
                                 <ListItemText 
-                                    align = {message.senderId === props.user.name ? "right" : 'left'} 
+                                    align = {message.name === props.user.name ? "right" : 'left'} 
                                     primary={message.text}></ListItemText>
                             </Grid>
                             <Grid item xs={12}>
                                 <ListItemText 
-                                    align = {message.senderId === props.user.name ? "right" : 'left'} 
-                                    secondary={message.senderId + ' ' + message.time}></ListItemText>
+                                    align = {message.name === props.user.name ? "right" : 'left'} 
+                                    secondary={message.name + ' ' + message.time}></ListItemText>
                             </Grid>
                         </Grid>
                     </ListItem>
