@@ -24,7 +24,6 @@ function App() {
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
 
-  console.log(userSignin)
 
   return  (
     <Router>

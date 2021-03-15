@@ -16,7 +16,6 @@ const signin = (email, password) => async (dispatch) => {
   auth().signInWithEmailAndPassword(email, password)
   .then((userCredential) => {
     let user = userCredential.user;
-    console.log(user.displayName)
     Cookie.set('userInfo', JSON.stringify({name: user.displayName, onLine: false}));
     dispatch({ type: USER_SIGNIN_SUCCESS, payload: {name: user.displayName, email: email, password: password, onLine: false}});
     

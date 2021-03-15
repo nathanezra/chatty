@@ -40,7 +40,6 @@ const DUMMY_DATA = [
 
     const classes = useStyles();
 
-    console.log(props.messages)
       return (
         <div >
             <Title title={props.title} />
@@ -49,7 +48,7 @@ const DUMMY_DATA = [
                     <Avatars users={[{name:'nathan', onLine:true},{name:'paul', onLine:false}]}/>
                 </Grid>
                 <Grid item xs={9}>
-                    <MessageList messages={DUMMY_DATA} user={{name:'janedoe'}}/>
+                    <MessageList messages={props.messages} user={{name:'janedoe'}}/>
                     <Divider />
                     <SendMessageForm sendMessage={props.sendMessage}/>
                 </Grid>
