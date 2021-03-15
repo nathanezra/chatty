@@ -20,6 +20,7 @@ function RegisterScreen(props) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [rePassword, setRePassword] = useState('');
+  const [messagePassW, setMessagePassW] = useState(null);
   const userRegister = useSelector(state => state.userRegister);
   const { loading, userInfo, error } = userRegister;
   const dispatch = useDispatch();
@@ -38,7 +39,10 @@ function RegisterScreen(props) {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(register(name, email, password));
+    if(password === rePassword)
+      dispatch(register(name, email, password));
+    else
+      setMessagePassW('Not same passwords')
   }
 
   const useStyles = makeStyles((theme) => ({
@@ -70,6 +74,7 @@ function RegisterScreen(props) {
       <form className={classes.form} onSubmit={submitHandler} autoComplete="off">
         {loading && <div>Loading...</div>}
         {error && <div>{error}</div>}
+        {messagePassW && <div>{messagePassW}</div>}
         <FormLabel color="primary">Create Account</FormLabel>
         <CardContent>
           <Grid container spacing={2}>

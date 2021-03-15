@@ -40,7 +40,7 @@ function ChatScreen(props) {
   let compareTime = (t1, t2) => {
     if(t1.time > t2.time)
       return 1
-   else
+    else
       return -1
   }
 
