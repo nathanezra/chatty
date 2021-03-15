@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import Chat from '../components/chat/Chat'
 import { addMessage, readMessage } from '../actions/messageActions';
+import { getAllUsers } from '../actions/allUsersActions'
 import firebase from 'firebase';
 
 function ChatScreen(props) {
@@ -15,13 +16,21 @@ function ChatScreen(props) {
   const messageStore = useSelector(state => state.message);
   const { messages } = messageStore;
 
+  const users = useSelector(state => state.allUsers);
+
+
+
   
   let state = useSelector(state => state)
 
 
   useEffect(() => {
     dispatch(readMessage())
+    dispatch(getAllUsers())
   }, []);
+
+ 
+
 
 
 

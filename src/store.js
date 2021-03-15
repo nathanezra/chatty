@@ -8,7 +8,9 @@ import {
 import {
   messageReducer,
 } from './reducers/messageReducers'
-
+import {
+  getAllUsersReducer
+} from './reducers/allUsersReducer'
 const userInfo = Cookie.getJSON('userInfo') || null
 
 
@@ -20,6 +22,7 @@ const reducer = combineReducers({
     userSignin: userSigninReducer,
     userRegister: userRegisterReducer,
     message: messageReducer,
+    allUsers: getAllUsersReducer
 });
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(

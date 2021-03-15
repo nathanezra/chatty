@@ -32,7 +32,6 @@ function MessageList (props) {
     return (
         <List className={classes.messageArea}>
             {props.messages ? props.messages.map(message => {
-                console.log(message)
                 let date = message.time.toDate().toString()
 
                 date = date.split(' ')
