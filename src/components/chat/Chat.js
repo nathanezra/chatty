@@ -7,12 +7,6 @@ import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Divider from '@material-ui/core/Divider';
-import TextField from '@material-ui/core/TextField';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import Avatar from '@material-ui/core/Avatar';
 
 const useStyles = makeStyles({
       
@@ -52,10 +46,10 @@ const DUMMY_DATA = [
             <Title title={props.title} />
             <Grid container component={Paper} className={classes.chatSection}>
                 <Grid item xs={3} className={classes.borderRight500}>
-                    <Avatars users={[{name:'nathan'},{name:'paul'}]}/>
+                    <Avatars users={[{name:'nathan', onLine:true},{name:'paul', onLine:false}]}/>
                 </Grid>
                 <Grid item xs={9}>
-                    <MessageList messages={DUMMY_DATA} user={props.userInfo}/>
+                    <MessageList messages={DUMMY_DATA} user={{name:'janedoe'}}/>
                     <Divider />
                     <SendMessageForm sendMessage={props.sendMessage}/>
                 </Grid>

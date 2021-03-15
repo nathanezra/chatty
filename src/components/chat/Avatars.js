@@ -15,7 +15,7 @@ function Avatars (props) {
     return (
         <List>
             {props.users ? props.users.map(u => 
-            {return(
+            {return u.onLine ? null : (
                 <ListItem button >
                         <ListItemIcon>
                             <Avatar />
@@ -30,7 +30,7 @@ function Avatars (props) {
             <Divider />
             <List>
                 {props.users ? props.users.map(u => 
-                {return(
+                {return u.onLine ? (
                     <ListItem button >
                             <ListItemIcon>
                                 <Avatar />
@@ -38,7 +38,7 @@ function Avatars (props) {
                             <ListItemText primary={u.name}></ListItemText>
                             <ListItemText secondary="online" align="right"></ListItemText>
                     </ListItem>
-                )}): null}
+                ) : null }): null}
             </List>
         </List>
     )
