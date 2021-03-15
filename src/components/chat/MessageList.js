@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 import Avatars from './Avatars';
 import Grid from '@material-ui/core/Grid';
@@ -25,7 +25,17 @@ const useStyles = makeStyles({
 function MessageList (props) {
 
     const classes = useStyles();
-    
+    const scrollRef = useRef(null);
+    const [scroll, setScroll] = useState(0)
+
+  
+
+    useEffect(() => {
+        if (scrollRef.current) {
+          scrollRef.current.scrollIntoView({ behaviour: "smooth" });
+        }
+      });
+
     const userName = props.user ? props.user.name : ''
 
 
@@ -37,7 +47,7 @@ function MessageList (props) {
                 date = date.split(' ')
                 date = [date[1], date[2], date[3], date[4]].join(' ')
                 return(
-                    <ListItem>
+                    <ListItem >
                         <Grid container>
                             <Grid item xs={12}>
                                 <ListItemText 
@@ -53,6 +63,7 @@ function MessageList (props) {
                     </ListItem>
                 )
             }): null}
+             <ListItem ref={scrollRef}  ></ListItem>
         </List>
     )
       
