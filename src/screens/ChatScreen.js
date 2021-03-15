@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import Chat from '../components/chat/Chat'
 import { addMessage, readMessage } from '../actions/messageActions';
- 
+import firebase from 'firebase';
 
 function ChatScreen(props) {
 
@@ -28,8 +28,30 @@ function ChatScreen(props) {
   let sendMessage = (text) => {
     dispatch(addMessage(userInfo.name, text))
   }
+
+  
+  let compareTime = (t1, t2) => {
+    if(t1.time > t2.time)
+      return 1
+   else
+      return -1
+  }
+
+
+  let sortTime = (arr) => {
+    let sortArr = arr
+
+    if(arr === undefined)
+      return []
+    if(arr.length < 2)
+      return sortArr
+    else{
+     return sortArr.sort(compareTime)
+    }
+  }
+
   return(
-    <Chat title={'My Awesome Chat'} messages = {messages} user={userInfo} sendMessage={sendMessage}/>
+    <Chat title={'My Awesome Chat'} messages = {messageStore.loading ? [] : sortTime(messages)} user={userInfo} sendMessage={sendMessage}/>
   ) 
 }
 

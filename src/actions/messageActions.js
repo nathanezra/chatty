@@ -4,9 +4,10 @@ import firebase from 'firebase';
 
 
 const addMessage = (userName, text) => async (dispatch) => {
-    let time = firebase.firestore.FieldValue.serverTimestamp()
-    db.collection('messages').add({name: userName, text: text, time: firebase.firestore.FieldValue.serverTimestamp()})
+    let time = firebase.firestore.Timestamp.now()
+    db.collection('messages').add({name: userName, text: text, time: time})
     .then((docRef) => {
+        console.log('docRef', docRef)
       dispatch({ type: MESSAGE_ADD_SUCCESS, payload: {name: userName, text: text, time: time}});
     })
     .catch((error) => {
