@@ -12,30 +12,37 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Avatar from '@material-ui/core/Avatar';
 
 
-
+const useStyles = makeStyles({
+      
+    messageArea: {
+        height: '70vh',
+        overflowY: 'auto'
+      }
+    
+  });
 
 function MessageList (props) {
 
-    // const classes = useStyles();
+    const classes = useStyles();
     
 
     return (
-        <>
-            <ul className="message-list">                 
-                {props.messages.map(message => {
-                    return (
-                        <li key={message.id}>
-                        <div>
-                            {message.senderId}
-                        </div>
-                        <div>
-                            {message.text}
-                        </div>
-                        </li>
-                    )
-                })}
-        </ul>
-        </>
+        <List className={classes.messageArea}>
+            {props.messages.map(message => {
+                return(
+                    <ListItem>
+                        <Grid container>
+                            <Grid item xs={12}>
+                                <ListItemText align="right" primary={message.text}></ListItemText>
+                            </Grid>
+                            <Grid item xs={12}>
+                                <ListItemText align="right" secondary={message.time}></ListItemText>
+                            </Grid>
+                        </Grid>
+                    </ListItem>
+                )
+            })}
+        </List>
     )
       
 }

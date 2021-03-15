@@ -17,8 +17,11 @@ import Avatar from '@material-ui/core/Avatar';
 const useStyles = makeStyles({
       
     chatSection: {
-      width: '100%',
-      height: '80vh'
+      width: '50%',
+      height: '50%',
+      marginLeft: '25%',
+      marginTop: '10px',
+      
     },
     borderRight500: {
         borderRight: '1px solid #e0e0e0'
@@ -29,11 +32,13 @@ const useStyles = makeStyles({
 const DUMMY_DATA = [
     {
       senderId: "perborgen",
-      text: "who'll win?"
+      text: "who'll win?",
+      time: "10:30"
     },
     {
       senderId: "janedoe",
-      text: "who'll win?"
+      text: "I dont know",
+      time: "10:35"
     }
   ]
 
