@@ -1,10 +1,13 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import Cookie from 'js-cookie';
+// import {reduxFirestore, getFirestore} from 'redux-firestore'
+// import {reactReduxFirebase, getFirebase} from 'react-redux-firebase'
 import {
     userSigninReducer,
     userRegisterReducer,
   } from './reducers/userReducers';
+// import firebaseConfig from './config/firebase'
 
 const userInfo = Cookie.getJSON('userInfo') || null
 

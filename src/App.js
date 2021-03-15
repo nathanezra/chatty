@@ -34,7 +34,6 @@ function App() {
             title={'Chatty'}
             userInfo={userInfo} />
         <Switch>
-          {/* <Route exact path="/" component={Home}></Route> */}
           <Route path="/chat" component={ChatScreen}></Route>
           <Route path="/register" component={RegisterScreen}></Route>
           <Route path="/signin" component={SigninScreen}></Route>
