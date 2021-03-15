@@ -7,7 +7,6 @@ const addMessage = (userName, text) => async (dispatch) => {
     let time = firebase.firestore.Timestamp.now()
     db.collection('messages').add({name: userName, text: text, time: time})
     .then((docRef) => {
-        console.log('docRef', docRef)
       dispatch({ type: MESSAGE_ADD_SUCCESS, payload: {name: userName, text: text, time: time}});
     })
     .catch((error) => {
@@ -18,6 +17,10 @@ const addMessage = (userName, text) => async (dispatch) => {
 const readMessage = () => async (dispatch) => {
     dispatch({ type: MESSAGE_READ_REQUEST });
     try{
+
+        
+    
+
         let messages = []
         let data = await db.collection('messages').get()
         if(data)
@@ -25,6 +28,16 @@ const readMessage = () => async (dispatch) => {
         else
             throw('Not able to read data')
         dispatch({ type: MESSAGE_READ_SUCCESS, payload: messages});
+
+        db.collection("messages")
+            .onSnapshot((data) => {
+                let newMessages = []
+                data.forEach((doc) => {
+                    newMessages.push(doc.data())
+                });
+                dispatch({ type: MESSAGE_READ_SUCCESS, payload: newMessages})
+            });
+       
     }catch(error){
         dispatch({ type: MESSAGE_READ_FAIL, payload: error.message })
     }

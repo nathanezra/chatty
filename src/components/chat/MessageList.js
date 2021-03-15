@@ -26,7 +26,6 @@ function MessageList (props) {
 
     const classes = useStyles();
     const scrollRef = useRef(null);
-    const [scroll, setScroll] = useState(0)
 
   
 
