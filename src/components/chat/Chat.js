@@ -16,7 +16,7 @@ const DUMMY_DATA = [
 
   function Chat(props) {
       return (
-        <div style={{backgroundColor:'white'}}>
+        <div >
             <Title title={props.title} />
             <MessageList messages={DUMMY_DATA}/>
             <SendMessageForm sendMessage={props.sendMessage}/>
