@@ -45,6 +45,7 @@ function MessageList (props) {
 
                 date = date.split(' ')
                 date = [date[1], date[2], date[3], date[4]].join(' ')
+
                 return(
                     <ListItem >
                         <Grid container>

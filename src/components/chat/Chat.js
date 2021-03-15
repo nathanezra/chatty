@@ -23,18 +23,6 @@ const useStyles = makeStyles({
     
   });
 
-const DUMMY_DATA = [
-    {
-      name: "perborgen",
-      text: "who'll win?",
-      time: "10:30"
-    },
-    {
-      name: "janedoe",
-      text: "I dont know",
-      time: "10:35"
-    }
-  ]
 
   function Chat(props) {
 

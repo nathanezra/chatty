@@ -7,7 +7,7 @@ const addMessage = (userName, text) => async (dispatch) => {
     let time = firebase.firestore.Timestamp.now()
     db.collection('messages').add({name: userName, text: text, time: time})
     .then((docRef) => {
-      dispatch({ type: MESSAGE_ADD_SUCCESS, payload: {name: userName, text: text, time: time}});
+      dispatch({ type: MESSAGE_ADD_SUCCESS});
     })
     .catch((error) => {
       dispatch({ type: MESSAGE_ADD_FAIL, payload: error.message });
@@ -17,9 +17,6 @@ const addMessage = (userName, text) => async (dispatch) => {
 const readMessage = () => async (dispatch) => {
     dispatch({ type: MESSAGE_READ_REQUEST });
     try{
-
-        
-    
 
         let messages = []
         let data = await db.collection('messages').get()
