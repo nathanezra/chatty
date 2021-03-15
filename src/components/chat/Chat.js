@@ -40,6 +40,7 @@ const DUMMY_DATA = [
 
     const classes = useStyles();
 
+    console.log(props.messages)
       return (
         <div >
             <Title title={props.title} />
