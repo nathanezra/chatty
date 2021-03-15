@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
+import Chat from '../components/chat/Chat'
 
 function ChatScreen(props) {
 
@@ -35,8 +35,7 @@ function ChatScreen(props) {
   const classes = useStyles();
 
   return(
-    <Card variant="outlined" className={classes.root}>
-    </Card>
+    <Chat title={'My Awesome Chat'}/>
   ) 
 }
 
