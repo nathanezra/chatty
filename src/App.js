@@ -8,13 +8,15 @@ import {
 
 import { useSelector } from 'react-redux';
 // import Home from './screens/Home';
-// import Chat from './screens/Chat';
+
 import RegisterScreen from './screens/RegisterScreen';
 import SigninScreen from './screens/SigninScreen';
 import LogoutScreen from './screens/LogoutScreen';
+import ChatScreen from './screens/ChatScreen';
+
+
 import background from "./img/terre.jpg"
 import ButtonAppBar from './components/AppBar';
-
 
 
 function App() {
@@ -33,7 +35,7 @@ function App() {
             userInfo={userInfo} />
         <Switch>
           {/* <Route exact path="/" component={Home}></Route> */}
-          {/* <Route path="/chat" component={Chat}></Route> */}
+          <Route path="/chat" component={ChatScreen}></Route>
           <Route path="/register" component={RegisterScreen}></Route>
           <Route path="/signin" component={SigninScreen}></Route>
           <Route path="/logout" component={LogoutScreen}></Route>
