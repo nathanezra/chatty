@@ -13,7 +13,7 @@ import { db } from '../config/firebase'
 const signin = (email, password) => async (dispatch, {getFirebase, getFirestore}) => {
   dispatch({ type: USER_SIGNIN_REQUEST, payload: { email, password } });
   try {
-    let data = await auth().signInWithEmailAndPassword(email, password);
+    await auth().signInWithEmailAndPassword(email, password);
     dispatch({ type: USER_SIGNIN_SUCCESS, payload: data });
     Cookie.set('userInfo', JSON.stringify(data));
   } catch (error) {
@@ -23,16 +23,22 @@ const signin = (email, password) => async (dispatch, {getFirebase, getFirestore}
 
 const register = (name, email, password) => async (dispatch) => {
   dispatch({ type: USER_REGISTER_REQUEST, payload: { name, email, password } });
-  // const firestore = getFirestore()
-  console.log('hey1')
-  db.collection('utilisateurs').add({name: name, onLine: false})
-  .then((docRef) => {
-    dispatch({ type: USER_REGISTER_SUCCESS, payload: {name: name, onLine: false}});
-    Cookie.set('userInfo', JSON.stringify({name: name, onLine: false}));
-  })
-  .catch((error) => {
+
+  try{
+    await auth().createUserWithEmailAndPassword(email, password);
+    db.collection('utilisateurs').add({name: name, onLine: false})
+    .then((docRef) => {
+      dispatch({ type: USER_REGISTER_SUCCESS, payload: {name: name, onLine: false}});
+      Cookie.set('userInfo', JSON.stringify({name: name, onLine: false}));
+    })
+    .catch((error) => {
+      dispatch({ type: USER_REGISTER_FAIL, payload: error.message });
+    });
+  }
+  catch (error) {
     dispatch({ type: USER_REGISTER_FAIL, payload: error.message });
-  });
+  }
+  
 
 
   // let data = await auth().createUserWithEmailAndPassword(email, password);
@@ -40,6 +46,7 @@ const register = (name, email, password) => async (dispatch) => {
 }
 
 const logout = () => (dispatch, {getFirebase, getFirestore}) => {
+  auth().signOut(email, password)
   Cookie.remove("userInfo");
   dispatch({ type: USER_LOGOUT })
 }
