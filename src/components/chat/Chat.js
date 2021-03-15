@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Title from './Title'
 import MessageList from './MessageList'
 import SendMessageForm from './SendMessageForm'
@@ -43,6 +43,7 @@ const DUMMY_DATA = [
   ]
 
   function Chat(props) {
+
     const classes = useStyles();
 
 
@@ -54,7 +55,7 @@ const DUMMY_DATA = [
                     <Avatars users={[{name:'nathan'},{name:'paul'}]}/>
                 </Grid>
                 <Grid item xs={9}>
-                    <MessageList messages={DUMMY_DATA}/>
+                    <MessageList messages={DUMMY_DATA} user={props.userInfo}/>
                     <Divider />
                     <SendMessageForm sendMessage={props.sendMessage}/>
                 </Grid>

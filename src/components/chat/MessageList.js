@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+
 import Avatars from './Avatars';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
@@ -36,7 +37,7 @@ function MessageList (props) {
                                 <ListItemText align="right" primary={message.text}></ListItemText>
                             </Grid>
                             <Grid item xs={12}>
-                                <ListItemText align="right" secondary={message.time}></ListItemText>
+                                <ListItemText align="right" secondary={message.senderId + ' ' + message.time}></ListItemText>
                             </Grid>
                         </Grid>
                     </ListItem>

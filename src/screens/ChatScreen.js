@@ -35,7 +35,7 @@ function ChatScreen(props) {
   const classes = useStyles();
 
   return(
-    <Chat title={'My Awesome Chat'}/>
+    <Chat title={'My Awesome Chat'} user={props.userInfo}/>
   ) 
 }
 
