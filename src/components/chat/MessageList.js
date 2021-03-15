@@ -28,9 +28,15 @@ function MessageList (props) {
     
     const userName = props.user ? props.user.name : ''
 
+    console.log(props.messages)
+
     return (
         <List className={classes.messageArea}>
             {props.messages ? props.messages.map(message => {
+                let date = message.time.toDate().toString()
+
+                date = date.split(' ')
+                date = [date[1], date[2], date[3], date[4]].join(' ')
                 return(
                     <ListItem>
                         <Grid container>
@@ -42,7 +48,7 @@ function MessageList (props) {
                             <Grid item xs={12}>
                                 <ListItemText 
                                     align = {message.name === userName? "right" : 'left'} 
-                                    secondary={message.name + ' ' + message.time}></ListItemText>
+                                    secondary={message.name + ' ' + date}></ListItemText>
                             </Grid>
                         </Grid>
                     </ListItem>

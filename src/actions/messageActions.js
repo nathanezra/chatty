@@ -1,10 +1,13 @@
 import { MESSAGE_ADD_REQUEST, MESSAGE_ADD_SUCCESS, MESSAGE_ADD_FAIL, MESSAGE_READ_REQUEST, MESSAGE_READ_SUCCESS, MESSAGE_READ_FAIL} from "../constants/messageConstants";
 import { db } from '../config/firebase'
+import firebase from 'firebase';
+
 
 const addMessage = (userName, text) => async (dispatch) => {
-    db.collection('messages').add({name: userName, text: text})
+    let time = firebase.firestore.FieldValue.serverTimestamp()
+    db.collection('messages').add({name: userName, text: text, time: firebase.firestore.FieldValue.serverTimestamp()})
     .then((docRef) => {
-      dispatch({ type: MESSAGE_ADD_SUCCESS, payload: {name: userName, text: text}});
+      dispatch({ type: MESSAGE_ADD_SUCCESS, payload: {name: userName, text: text, time: time}});
     })
     .catch((error) => {
       dispatch({ type: MESSAGE_ADD_FAIL, payload: error.message });

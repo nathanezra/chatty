@@ -23,9 +23,7 @@ function ChatScreen(props) {
     dispatch(readMessage())
   }, []);
 
-  useEffect(() => {
-    console.log('I changed')
-  }, [messageStore]);
+
 
   let sendMessage = (text) => {
     dispatch(addMessage(userInfo.name, text))
